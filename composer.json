@@ -1,0 +1,21 @@
+{
+    "name": "fastartconsulting/log-bundle",
+    "description": "FastArtConsulting Symfony LogBundle",
+    "type": "symfony-bundle",
+    "require": {
+        "doctrine/mongodb-odm-bundle": "^3.5",
+        "fastartconsulting/user-bundle": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FAC\\LogBundle\\": ""
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lmangiacotti",
+            "email": "luca.mangiacotti@fastartconsulting.com"
+        }
+    ]
+}
