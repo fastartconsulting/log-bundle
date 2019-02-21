@@ -1,11 +1,11 @@
 <?php
 
-namespace LogBundle\Service;
+namespace FAC\LogBundle\Service;
 
 use DateTime;
-use LogBundle\Document\LogMonitor;
-use LogBundle\Model\Log;
-use LogBundle\Repository\LogMonitorRepository;
+use FAC\LogBundle\Document\LogMonitor;
+use FAC\LogBundle\Model\Log;
+use FAC\LogBundle\Repository\LogMonitorRepository;
 use Schema\Document;
 use Schema\DocumentService;
 use Symfony\Component\DependencyInjection\ContainerInterface;

@@ -1,9 +1,9 @@
 <?php
 
-namespace LogBundle\Repository;
+namespace FAC\LogBundle\Repository;
 
 use Doctrine\ODM\MongoDB\MongoDBException;
-use LogBundle\Document\LogMonitor;
+use FAC\LogBundle\Document\LogMonitor;
 use Schema\SchemaDocumentRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -20,7 +20,7 @@ class LogMonitorRepository extends SchemaDocumentRepository {
     }
 
     public function findErrors($max_count) {
-        $qb = $this->dm->createQueryBuilder('LogBundle:LogMonitor');
+        $qb = $this->dm->createQueryBuilder('FAC\LogBundle:LogMonitor');
         $qb->field('count')->gte($max_count);
         $qb->field('level')->lte(500);
         $list = $qb->getQuery()->execute();
@@ -29,7 +29,7 @@ class LogMonitorRepository extends SchemaDocumentRepository {
     }
 
     public function findErrorsUrgency($max_count) {
-        $qb = $this->dm->createQueryBuilder('LogBundle:LogMonitor');
+        $qb = $this->dm->createQueryBuilder('FAC\LogBundle:LogMonitor');
         $qb->field('count')->gte($max_count);
         $qb->field('level')->equals(500);
         $list = $qb->getQuery()->execute();

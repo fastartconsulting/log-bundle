@@ -1,20 +1,20 @@
 <?php
 
-namespace LogBundle\Command;
+namespace FAC\LogBundle\Command;
 
 use DateTime;
 use EmailBundle\Entity\Email;
 use EmailBundle\Service\EmailService;
 use http\Exception;
-use LogBundle\Document\LogMonitor;
-use LogBundle\Service\LogMonitorService;
+use FAC\LogBundle\Document\LogMonitor;
+use FAC\LogBundle\Service\LogMonitorService;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Twig_Environment;
 use Symfony\Component\Translation\TranslatorInterface;
-use LogBundle\Service\LogService;
+use FAC\LogBundle\Service\LogService;
 use Utils\LogUtils;
 
 class CheckLogMonitorUrgencyCommand extends ContainerAwareCommand {

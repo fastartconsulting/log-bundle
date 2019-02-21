@@ -1,6 +1,6 @@
 <?php
 
-namespace LogBundle\Repository;
+namespace FAC\LogBundle\Repository;
 
 class LogRepository {
 

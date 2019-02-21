@@ -1,6 +1,6 @@
 <?php
 
-namespace LogBundle\Model;
+namespace FAC\LogBundle\Model;
 
 use DateTime;
 use JMS\Serializer\Annotation as JMS;

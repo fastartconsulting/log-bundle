@@ -1,6 +1,6 @@
 <?php
 
-namespace LogBundle\Command;
+namespace FAC\LogBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;

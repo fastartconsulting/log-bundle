@@ -1,6 +1,6 @@
 <?php
 
-namespace LogBundle\Document;
+namespace FAC\LogBundle\Document;
 
 use Schema\Document;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,7 +12,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedOne as EmbedOne;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
- * @MongoDB\Document(repositoryClass="LogBundle\Repository\LogMonitorRepository")
+ * @MongoDB\Document(repositoryClass="FAC\LogBundle\Repository\LogMonitorRepository")
  */
 class LogMonitor extends Document {
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace LogBundle\Controller;
+namespace FAC\LogBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
-use LogBundle\Document\LogMonitor;
-use LogBundle\Model\Log;
-use LogBundle\Service\LogMonitorService;
-use LogBundle\Service\LogService;
+use FAC\LogBundle\Document\LogMonitor;
+use FAC\LogBundle\Model\Log;
+use FAC\LogBundle\Service\LogMonitorService;
+use FAC\LogBundle\Service\LogService;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;

@@ -1,10 +1,10 @@
 <?php
 
-namespace LogBundle\Service;
+namespace FAC\LogBundle\Service;
 
 use DateTime;
 use http\Exception;
-use LogBundle\Model\Log;
+use FAC\LogBundle\Model\Log;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use UserBundle\Entity\User;
