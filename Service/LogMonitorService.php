@@ -4,17 +4,14 @@ namespace FAC\LogBundle\Service;
 
 use DateTime;
 use FAC\LogBundle\Document\LogMonitor;
-use FAC\LogBundle\Model\Log;
 use FAC\LogBundle\Repository\LogMonitorRepository;
-use Schema\Document;
-use Schema\DocumentService;
+use FAC\LogBundle\Utils\Utils;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
-use Utils\LogUtils;
 
-class LogMonitorService extends DocumentService {
+class LogMonitorService {
 
     private $user = null;
 
@@ -31,6 +28,9 @@ class LogMonitorService extends DocumentService {
 
     /** @var ContainerInterface $container */
     private $container;
+    private $repository;
+
+    private $authorization_checker;
 
     ///////////////////////////////////////////
     /// CONSTRUCTOR
@@ -55,89 +55,10 @@ class LogMonitorService extends DocumentService {
         $this->log_dir    = $container->getParameter('log_dir');
         $this->repository = $repository;
         $this->container  = $container;
-
-        parent::__construct($repository, $authorizationChecker);
+        $this->authorization_checker = $authorizationChecker;
 
         $this->logService = $logService;
 
-    }
-
-    /**
-     * Returns true if the logged user is the creator of this document.
-     * @param Document $document
-     * @return bool
-     */
-    public function isOwner(Document $document)
-    {
-        // TODO: Implement isOwner() method.
-    }
-
-    /**
-     * Returns true if the logged user can administrate the document
-     * @param Document $document
-     * @return bool
-     */
-    public function canAdmin(Document $document)
-    {
-        // TODO: Implement canAdmin() method.
-    }
-
-    /**
-     * Returns true if the logged user can POST the document
-     * @return bool
-     */
-    public function canPost()
-    {
-        // TODO: Implement canPost() method.
-    }
-
-    /**
-     * Returns true if the logged user can PUT the document
-     * @param Document $document
-     * @return bool
-     */
-    public function canPut(Document $document)
-    {
-        // TODO: Implement canPut() method.
-    }
-
-    /**
-     * Returns true if the logged user can PATCH the document
-     * @param Document $document
-     * @return bool
-     */
-    public function canPatch(Document $document)
-    {
-        // TODO: Implement canPatch() method.
-    }
-
-    /**
-     * Returns true if the logged user can DELETE the document
-     * @param Document $document
-     * @return bool
-     */
-    public function canDelete(Document $document)
-    {
-        // TODO: Implement canDelete() method.
-    }
-
-    /**
-     * Returns true if the logged user can GET the document
-     * @param Document $document
-     * @return bool
-     */
-    public function canGet(Document $document)
-    {
-        // TODO: Implement canGet() method.
-    }
-
-    /**
-     * Returns true if the logged user can GET a list of this document
-     * @return bool
-     */
-    public function canGetList()
-    {
-        // TODO: Implement canGetList() method.
     }
 
     /**
@@ -161,6 +82,8 @@ class LogMonitorService extends DocumentService {
         $when->setTimestamp(time())->getTimestamp();
 
         if(is_null($logMonitor)) {
+
+            /** @var LogMonitor $logMonitor */
             $logMonitor = new LogMonitor();
             $logMonitor->setCount(0);
             $logMonitor->setFirstHappened($when);
@@ -231,7 +154,7 @@ class LogMonitorService extends DocumentService {
             $this->user   = $this->container->get('security.token_storage')->getToken()->getUser();
         }
 
-        $params = LogUtils::getLogParams($this->request,$this->translator, $level, $message, $is_sys);
+        $params = Utils::getLogParams($this->request,$this->translator, $level, $message, $is_sys);
 
         if($level >= 400){
 
@@ -288,7 +211,7 @@ class LogMonitorService extends DocumentService {
             $list = $this->repository->findErrors(LogMonitor::LOG_MAX_COUNT);
         }
         catch (\Exception $e) {
-            $exception = LogUtils::getFormattedExceptions($e);
+            $exception = Utils::getFormattedExceptions($e);
             $this->trace(LogMonitor::LOG_CHANNEL_QUERY, 500, "query.error", $exception, $is_sys);
         }
 
@@ -303,7 +226,7 @@ class LogMonitorService extends DocumentService {
             $list = $this->repository->findErrorsUrgency(LogMonitor::LOG_MAX_COUNT);
         }
         catch (\Exception $e) {
-            $exception = LogUtils::getFormattedExceptions($e);
+            $exception = Utils::getFormattedExceptions($e);
             $this->trace(LogMonitor::LOG_CHANNEL_QUERY, 500, "query.error", $exception, $is_sys);
         }
 

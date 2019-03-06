@@ -4,10 +4,10 @@ namespace FAC\LogBundle\Repository;
 
 use Doctrine\ODM\MongoDB\MongoDBException;
 use FAC\LogBundle\Document\LogMonitor;
-use Schema\SchemaDocumentRepository;
+use Doctrine\ODM\MongoDB\DocumentRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LogMonitorRepository extends SchemaDocumentRepository {
+class LogMonitorRepository extends DocumentRepository {
 
     ///////////////////////////////////////////
     /// CONSTRUCTOR

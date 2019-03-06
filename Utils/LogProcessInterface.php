@@ -1,14 +1,14 @@
 <?php
 
 
-namespace FAC\UserBundle\Utils;
+namespace FAC\LogBundle\Utils;
 
 use FAC\UserBundle\Entity\User;
 use Swift_Mailer;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Twig_Environment;
 
-interface EmailProcessInterface
+interface LogProcessInterface
 {
 
     /**

@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\Date;
 /**
  * @MongoDB\Document(repositoryClass="FAC\LogBundle\Repository\LogMonitorRepository")
  */
-class LogMonitor extends Document {
+class LogMonitor {
 
     const LOG_LEVEL_SYS   = 0;
     const LOG_LEVEL_TRACK = 1;

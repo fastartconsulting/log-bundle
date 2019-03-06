@@ -1,14 +1,15 @@
 {
     "name": "fastartconsulting/log-bundle",
-    "description": "FastArtConsulting Symfony FAC\LogBundle",
+    "description": "FastArtConsulting Symfony LogBundle",
     "type": "symfony-bundle",
     "require": {
+        "ext-mongo": "*",
         "doctrine/mongodb-odm-bundle": "^3.5",
         "fastartconsulting/user-bundle": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "FAC\\FAC\LogBundle\\": ""
+            "FAC\\LogBundle\\": ""
         }
     },
     "license": "MIT",
